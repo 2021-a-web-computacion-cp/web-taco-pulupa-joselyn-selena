@@ -89,7 +89,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsuarioController.prototype, "crearUsuario", null);
 __decorate([
-    (0, common_1.Put)('editar/:idUsuario/:apellido/:nombre'),
+    (0, common_1.Put)('editar/:idUsuario'),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

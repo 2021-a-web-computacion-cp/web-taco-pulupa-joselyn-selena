@@ -41,7 +41,7 @@ export class UsuarioController{
         return this.usuarioService.crearUno({apellido:apellido,nombre:nombre})
     }
 
-    @Put('editar/:idUsuario/:apellido/:nombre')
+    @Put('editar/:idUsuario')
     editarUno(@Param() parametrosRuta,@Body() bodyParams,){
 
         id: Number(parametrosRuta.idUsuario);
