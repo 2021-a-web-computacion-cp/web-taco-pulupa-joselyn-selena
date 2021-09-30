@@ -1,0 +1,108 @@
+<%- include('../comunes/cabecera')%>
+
+<div class="container">
+        <%const existeMensaje = typeof  datos.mensaje !==  'undefined'%>
+        <%if(existeMensaje){%>
+            <div class="alert alert-success" role="alert">
+                <%= datos.mensaje%>
+            </div>
+        <%}%>
+
+    <h1>Crear CASA</h1>
+    <form action="/casas/crear-casa-formulario" method="post">
+
+        <div class="mb-3">
+            <label for="sector" class="form-label"> Sector </label>
+            <input placeholder="Ej: Calderon"
+                   type="text"
+                   name="sector"
+                   class="form-control"
+                   id="sector"
+                   aria-describedby="ayudaSector">
+            <div id="ayudaSector" class="form-text"> Ingrese el sector donde se encuentra la casa. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="color" class="form-label"> Color </label>
+            <input placeholder="Ej: Blanco"
+                   type="text"
+                   name="color"
+                   class="form-control"
+                   id="color"
+                   aria-describedby="ayudaColor">
+            <div id="ayudaColor" class="form-text"> Ingrese el color. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="fechaCreacion" class="form-label"> Fecha de Creación </label>
+            <input placeholder="Ej: 2021-02-09"
+                   type="date"
+                   name="fechaCreacion"
+                   class="form-control"
+                   id="fechaCreacion"
+                   aria-describedby="ayudaFechaCreacion">
+            <div id="ayudaFechaCreacion" class="form-text"> Ingrese la fecha de creación. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="numeroCuartos" class="form-label"> Número de Cuartos </label>
+            <input placeholder="Ej: 2"
+                   type="text"
+                   name="numeroCuartos"
+                   class="form-control"
+                   id="numeroCuartos"
+                   aria-describedby="ayudaNumeroCuartos">
+            <div id="ayudaNumeroCuartos" class="form-text"> Ingrese el número de cuartos. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="numeroBanios" class="form-label"> Número de Baños </label>
+            <input placeholder="Ej: 2"
+                   type="text"
+                   name="numeroBanios"
+                   class="form-control"
+                   id="numeroBanios"
+                   aria-describedby="ayudaNumeroBanios">
+            <div id="ayudaNumeroBanios" class="form-text"> Ingrese el número de baños. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="numeroPisos" class="form-label"> Número de Pisos </label>
+            <input placeholder="Ej: 2"
+                   type="text"
+                   name="numeroPisos"
+                   class="form-control"
+                   id="numeroCuartos"
+                   aria-describedby="ayudaNumeroPisos">
+            <div id="ayudaNumeroPisos" class="form-text"> Ingrese el número de pisos. </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" class="form-label"> Precio </label>
+            <input placeholder="Ej: 230,5"
+                   type="text"
+                   name="precio"
+                   class="form-control"
+                   id="precio"
+                   aria-describedby="ayudaPrecio">
+            <div id="ayudaPrecio" class="form-text"> Ingrese el precio. </div>
+        </div>
+
+        <div class="mb-3">
+            <label><input type="checkbox" id="disponibilidad" name="disponibilidad"> Disponibilidad</label>
+            <div id="ayudaDisponibilidad" class="form-text">Esta disponible?</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Crear</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".close").click(function(){
+            $("#myAlert").alert("close");
+        });
+    });
+</script>
+
+<%- include('../comunes/footer')%>

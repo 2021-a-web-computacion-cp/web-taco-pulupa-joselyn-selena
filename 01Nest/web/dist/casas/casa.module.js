@@ -6,30 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.CasaModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const prisma_service_1 = require("./prisma.service");
-const usuario_module_1 = require("./usuario/usuario.module");
-const casa_module_1 = require("./casa/casa.module");
-let AppModule = class AppModule {
+const prisma_service_1 = require("../prisma.service");
+const casa_controller_1 = require("./casa.controller");
+const casa_service_1 = require("./casa.service");
+let CasaModule = class CasaModule {
 };
-AppModule = __decorate([
+CasaModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            usuario_module_1.UsuarioModule,
-            casa_module_1.CasaModule,
+        imports: [],
+        controllers: [
+            casa_controller_1.CasaController
         ],
-        controllers: [app_controller_1.AppController],
         providers: [
-            app_service_1.AppService,
-            prisma_service_1.PrismaService,
+            casa_service_1.CasaService,
+            prisma_service_1.PrismaService
         ],
         exports: [
-            app_service_1.AppService
+            casa_service_1.CasaService
         ],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], CasaModule);
+exports.CasaModule = CasaModule;
+//# sourceMappingURL=casa.module.js.map

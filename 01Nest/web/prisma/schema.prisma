@@ -24,3 +24,15 @@ model Mascota{
     usuario             EPN_USUARIO @relation(fields: [usuarioId],references:[id])
     usuarioId           Int
 }
+
+model CASAS{
+    id                  Int         @id @default(autoincrement())
+    fechaCreacion       DateTime
+    numeroCuartos       Int
+    numeroBanios        Int
+    color               String
+    numeroPisos         Int
+    precio              Float
+    sector              String
+    disponibilidad      Boolean
+}

@@ -1,10 +1,9 @@
 import {Injectable} from "@nestjs/common";
 import {PrismaService} from "../prisma.service";
-import {Prisma} from '@prisma/client';
-
+import {Prisma} from "@prisma/client";
 
 @Injectable()
-export class UsuarioService{
+export class CasaService{
     constructor(
         //Inyectar dependencias
         private prisma: PrismaService,
@@ -15,39 +14,40 @@ export class UsuarioService{
         skip?: number;
         take?: number;
         busqueda?: string;
-        // orderBy?: Prisma.EPN_UsuarioOrder;
     }) {
-        const or = parametrosBusqueda.busqueda ? {
+        const or = parametrosBusqueda.busqueda? {
             OR: [
-                { nombre: { contains: parametrosBusqueda.busqueda } },
-                { apellido: { contains: parametrosBusqueda.busqueda } },
+                { sector: { contains: parametrosBusqueda.busqueda } },
+                { color: { contains: parametrosBusqueda.busqueda } },
             ], } : {};
-        return this.prisma.ePN_USUARIO.findMany({
+
+        return this.prisma.cASAS.findMany({
             where: or,
             take: Number(parametrosBusqueda.take) || undefined,
             skip: Number(parametrosBusqueda.skip) || undefined,
         });
     }
 
+
     buscarUno(id: number){
-        return this.prisma.ePN_USUARIO.findUnique({
+        return this.prisma.cASAS.findUnique({
             where: {
                 id: id,
             },
         });
     }
 
-    crearUno(usuario: Prisma.EPN_USUARIOCreateInput){
-        return this.prisma.ePN_USUARIO.create({
-            data: usuario,
+    crearUno(casa: Prisma.CASASCreateInput){
+        return this.prisma.cASAS.create({
+            data: casa,
         });
     }
 
     actualizarUno(parametrosActualizar: {
         id: number;
-        data: Prisma.EPN_USUARIOUpdateInput;
+        data: Prisma.CASASUpdateInput;
     }) {
-        return this.prisma.ePN_USUARIO.update({
+        return this.prisma.cASAS.update({
             data: parametrosActualizar.data,
             where: {
                 id: parametrosActualizar.id,
@@ -56,7 +56,7 @@ export class UsuarioService{
     }
 
     eliminarUno(id: number) {
-        return this.prisma.ePN_USUARIO.delete({
+        return this.prisma.cASAS.delete({
             where: { id: id },
         });
     }

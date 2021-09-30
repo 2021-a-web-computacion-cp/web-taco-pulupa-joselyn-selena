@@ -9,40 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsuarioService = void 0;
+exports.CasaService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
-let UsuarioService = class UsuarioService {
+let CasaService = class CasaService {
     constructor(prisma) {
         this.prisma = prisma;
     }
     buscarMuchos(parametrosBusqueda) {
         const or = parametrosBusqueda.busqueda ? {
             OR: [
-                { nombre: { contains: parametrosBusqueda.busqueda } },
-                { apellido: { contains: parametrosBusqueda.busqueda } },
+                { sector: { contains: parametrosBusqueda.busqueda } },
+                { color: { contains: parametrosBusqueda.busqueda } },
             ],
         } : {};
-        return this.prisma.ePN_USUARIO.findMany({
+        return this.prisma.cASAS.findMany({
             where: or,
             take: Number(parametrosBusqueda.take) || undefined,
             skip: Number(parametrosBusqueda.skip) || undefined,
         });
     }
     buscarUno(id) {
-        return this.prisma.ePN_USUARIO.findUnique({
+        return this.prisma.cASAS.findUnique({
             where: {
                 id: id,
             },
         });
     }
-    crearUno(usuario) {
-        return this.prisma.ePN_USUARIO.create({
-            data: usuario,
+    crearUno(casa) {
+        return this.prisma.cASAS.create({
+            data: casa,
         });
     }
     actualizarUno(parametrosActualizar) {
-        return this.prisma.ePN_USUARIO.update({
+        return this.prisma.cASAS.update({
             data: parametrosActualizar.data,
             where: {
                 id: parametrosActualizar.id,
@@ -50,14 +50,14 @@ let UsuarioService = class UsuarioService {
         });
     }
     eliminarUno(id) {
-        return this.prisma.ePN_USUARIO.delete({
+        return this.prisma.cASAS.delete({
             where: { id: id },
         });
     }
 };
-UsuarioService = __decorate([
+CasaService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], UsuarioService);
-exports.UsuarioService = UsuarioService;
-//# sourceMappingURL=usuario.service.js.map
+], CasaService);
+exports.CasaService = CasaService;
+//# sourceMappingURL=casa.service.js.map
